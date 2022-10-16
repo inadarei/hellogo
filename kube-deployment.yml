@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-web-hello
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      bb: web
+  template:
+    metadata:
+      labels:
+        bb: web
+    spec:
+      containers:
+      - name: ms-web-hello
+        image: index.docker.io/irakli/ms-web-hello:latest
+        imagePullPolicy: Always
