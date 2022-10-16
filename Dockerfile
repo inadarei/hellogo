@@ -10,21 +10,20 @@ COPY . ${SRC_PATH}
 WORKDIR ${SRC_PATH}
 
 # Build the binary.
-RUN go mod init ika.ge/helloweb && go build -o /go/bin/helloweb
+RUN go mod init ika.ge/helloweb \
+ && CGO_ENABLED=0 go build -ldflags "-s -w -extldflags '-static'" -buildvcs=false -o /go/bin/helloweb
 
 #------------------------------------
 # STEP 1: build a tiny release image
 #------------------------------------
-#FROM scratch
-FROM golang:1.19-alpine as release
+FROM scratch
 # Copy our static executable.
-COPY --from=base /go/bin/helloweb /go/bin/helloweb
+COPY --from=base /go/bin/helloweb /helloweb
 
 ENV PORT=8181
 EXPOSE ${PORT}
 
 # Run the hello binary.
-ENTRYPOINT ["/go/bin/helloweb"]
-# ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["/helloweb"]
 
 
