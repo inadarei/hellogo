@@ -2,7 +2,7 @@ default: run
 service:=ms-web-hello
 
 .PHONY: run
-start: 
+run: 
 	docker compose up
 
 .PHONY: stop
