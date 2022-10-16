@@ -9,4 +9,4 @@ services:
       - .:/app
     ports:
       - 8181
-    command: /bin/sh
+    command: /go/bin/helloweb

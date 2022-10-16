@@ -24,7 +24,7 @@ ENV PORT=8181
 EXPOSE ${PORT}
 
 # Run the hello binary.
-# ENTRYPOINT ["/go/bin/helloweb"]
-ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["/go/bin/helloweb"]
+# ENTRYPOINT ["/bin/sh"]
 
 
