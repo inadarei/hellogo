@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  ms-web-hello:
+    container_name: ms-web-hello
+    build: 
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - 8181
+    command: /bin/sh
