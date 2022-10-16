@@ -40,7 +40,7 @@ kube-deploy:
 
 .PHONY: kube-undeploy
 kube-undeploy:
-	kubectl deployment delete ${service}
+	kubectl delete deployment ${service}
 
 .PHONY: kube-expose
 kube-expose:
@@ -48,4 +48,4 @@ kube-expose:
 
 .PHONY: kube-unexpose
 kube-unexpose:
-	kubectl service delete ${service}-lb
+	kubectl delete service ${service}-lb
