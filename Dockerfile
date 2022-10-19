@@ -10,15 +10,17 @@ COPY . ${SRC_PATH}
 WORKDIR ${SRC_PATH}
 
 # Build the binary.
-RUN go mod init ika.ge/helloweb \
- && CGO_ENABLED=0 go build -ldflags "-s -w -extldflags '-static'" -buildvcs=false -o /go/bin/helloweb
+RUN ./builder.sh
+
 
 #------------------------------------
 # STEP 1: build a tiny release image
 #------------------------------------
 FROM scratch
+ARG TARGETOS
+ARG TARGETARCH
 # Copy our static executable.
-COPY --from=base /go/bin/helloweb /helloweb
+COPY --from=base /app/${TARGETOS}/${TARGETARCH}/helloweb /helloweb
 
 ENV PORT=8181
 EXPOSE ${PORT}

@@ -1,6 +1,14 @@
 default: run
 service:=ms-web-hello
 
+.PHONY: run-hub
+run-hub: 
+	docker compose -f docker-compose-hub.yml up
+
+.PHONY: stop-hub
+stop-hub: 
+	docker compose -f docker-compose-hub.yml down
+
 .PHONY: run
 run: 
 	docker compose up
@@ -33,6 +41,11 @@ build-for-hub:
 	docker image build -t irakli/${service}:0.1 -t irakli/${service}:latest .
 	docker image push irakli/${service}:0.1
 	docker image push irakli/${service}:latest
+
+.PHONY: build-multiplatform-publish
+build-multiplatform-publish:
+	docker rmi -f irakli/${service}:latest
+	docker buildx build --no-cache -t irakli/${service}:latest --platform linux/arm,linux/amd64,linux/arm64 -t irakli/${service}:0.1 -t irakli/${service}:latest --push .
 
 .PHONY: kube-deploy
 kube-deploy:

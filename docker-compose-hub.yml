@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  ms-web-hello-hub:
+    image: irakli/ms-web-hello:latest
+    container_name: ms-web-hello-hub
+    ports:
+      - 8181
