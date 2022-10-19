@@ -45,7 +45,7 @@ build-for-hub:
 .PHONY: build-multiplatform-publish
 build-multiplatform-publish:
 	docker rmi -f irakli/${service}:latest
-	docker buildx build --no-cache -t irakli/${service}:latest --platform linux/amd64,linux/arm64 -t irakli/${service}:0.1 -t irakli/${service}:latest --push .
+	docker buildx build --no-cache -t irakli/${service}:latest --platform linux/arm,linux/amd64,linux/arm64 -t irakli/${service}:0.1 -t irakli/${service}:latest --push .
 
 .PHONY: kube-deploy
 kube-deploy:
