@@ -11,6 +11,7 @@ Working Kubernetes installation and optionally LoadBalancer
 
 ```shell
 > helm repo add irakli https://raw.githubusercontent.com/inadarei/hellogo/main/charts/
+> helm repo update irakli
 > helm install irakli-test irakli/ms-hello-web
 ```
 
