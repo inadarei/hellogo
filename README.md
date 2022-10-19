@@ -1,5 +1,5 @@
 # hellogo
-Tiny Containerized Hello App in Go for Kubernetes testing on ARM64
+Tiny Containerized Hello App in Go for Kubernetes testing on Arm or Intel architectures.
 
 ## Requirements
 
