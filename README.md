@@ -1,4 +1,6 @@
 # hellogo
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/ms-hello-test)](https://artifacthub.io/packages/search?repo=ms-hello-test)
+
 Tiny Containerized Hello App in Go for Kubernetes testing on Arm or Intel architectures.
 
 ## Requirements
